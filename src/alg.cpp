@@ -8,8 +8,7 @@ int countPairs1(int* arr, int len, int value) {
             int sum = arr[i] + arr[j];
             if (sum == value) {
                 count++;
-            }
-            else if (sum > value) {
+            } else if (sum > value) {
                 break;
             }
         }
@@ -27,11 +26,9 @@ int countPairs2(int* arr, int len, int value) {
 
         if (sum < value) {
             left++;
-        }
-        else if (sum > value) {
+        } else if (sum > value) {
             right--;
-        }
-        else {
+        } else {
             if (arr[left] == arr[right]) {
                 int n = right - left + 1;
                 count += n * (n - 1) / 2;
@@ -63,11 +60,9 @@ static int bsFirst(int* arr, int from,
         if (arr[mid] == target) {
             result = mid;
             to = mid - 1;
-        }
-        else if (arr[mid] < target) {
+        } else if (arr[mid] < target) {
             from = mid + 1;
-        }
-        else {
+        } else {
             to = mid - 1;
         }
     }
@@ -82,11 +77,9 @@ static int bsLast(int* arr, int from,
         if (arr[mid] == target) {
             result = mid;
             from = mid + 1;
-        }
-        else if (arr[mid] < target) {
+        } else if (arr[mid] < target) {
             from = mid + 1;
-        }
-        else {
+        } else {
             to = mid - 1;
         }
     }
