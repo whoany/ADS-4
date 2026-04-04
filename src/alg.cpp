@@ -72,22 +72,33 @@ static int bsLast(int *arr, int from,
 
 int countPairs3(int *arr, int len, int value) {
     int count = 0;
+
     for (int i = 0; i < len - 1; i++) {
         int target = value - arr[i];
-        if (target < 0) {
-            continue;
-        }
+
         if (arr[i] > value) {
             break;
         }
-        int first = bsFirst(arr, i + 1,
-                             len - 1, target);
-        if (first == -1) {
+
+        int pos = bsFirst(arr, i + 1, len - 1, target);
+
+        if (pos == -1) {
             continue;
         }
-        int last = bsLast(arr, i + 1,
-                           len - 1, target);
-        count += (last - first + 1);
+
+        int left = pos;
+        int right = pos;
+
+        while (left > i + 1 && arr[left - 1] == target) {
+            left--;
+        }
+
+        while (right < len - 1 && arr[right + 1] == target) {
+            right++;
+        }
+
+        count += (right - left + 1);
     }
+
     return count;
 }
